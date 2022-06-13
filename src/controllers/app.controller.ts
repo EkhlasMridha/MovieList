@@ -41,8 +41,10 @@ export class AppController {
       throw new BadRequestException("Invalid email/password")
     }
     const jwt = await this.authService.getToken(user);
-    console.log(jwt)
-    return jwt;
+
+    return {
+      accessToken: jwt
+    };
   }
 
   @Get("profile")

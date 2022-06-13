@@ -8,7 +8,6 @@ export class AuthService {
     }
 
     async getToken(user: any) {
-        console.log(user)
         let token = this.jwtService.signAsync({ id: user.id });
         return token;
     }

@@ -9,6 +9,8 @@ import { JwtAuthGuard } from './guards/JwtAuthGuard';
 import { EmailExistsValidator } from './validators/email-exists.validator';
 import { ServiceModule } from './services/module/service.module';
 import { MovieController } from './controllers/movie.controller';
+import { MovieService } from './services/movie.service';
+import { Movies } from './Entities/Movies';
 
 @Module({
   imports: [
@@ -19,8 +21,8 @@ import { MovieController } from './controllers/movie.controller';
       username: "root",
       password: "",
       database: "ababadb",
-      // autoLoadEntities: true,
-      entities: [User],
+      autoLoadEntities: true,
+      // entities: [User,Movies],
       synchronize: true
     }),
     AuthModule,
@@ -30,6 +32,7 @@ import { MovieController } from './controllers/movie.controller';
   providers: [
     AppService,
     UserService,
+    MovieService,
     EmailExistsValidator,
     {
       provide: "APP_GUARD",

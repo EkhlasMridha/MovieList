@@ -1,6 +1,7 @@
 import { MinLength } from "class-validator";
-import { Column, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
+@Entity("movies")
 export class Movies {
     @PrimaryGeneratedColumn()
     id: number;
