@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Query, Request } from '@nestjs/common';
 import { CreateMovie } from 'src/Dtos/movies/create-movie';
-import { PaginationQuery } from 'src/Dtos/pagination-query.model';
+import { DynamicPaginationQuery, PaginationQuery } from 'src/Dtos/pagination-query.model';
 import { MovieService } from 'src/services/movie.service';
 
 @Controller('movie')

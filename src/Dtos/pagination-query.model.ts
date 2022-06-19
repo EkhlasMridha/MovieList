@@ -4,5 +4,12 @@ export interface PaginationQuery {
     pageSize: number;
     pageNumber: number;
     search: string;
-    sort: FindOptionsOrderValue
+    sortString: string;
+}
+
+export interface DynamicPaginationQuery {
+    pageSize: number;
+    pageNumber: number;
+    searchProperties: string;
+    sortProperties: string;
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateMovie } from 'src/Dtos/movies/create-movie';
-import { PaginationQuery } from 'src/Dtos/pagination-query.model';
+import { DynamicPaginationQuery, PaginationQuery } from 'src/Dtos/pagination-query.model';
 import { Pagination } from 'src/Dtos/pagination.model';
 import { Movies } from 'src/Entities/Movies';
 import { Like, Repository } from 'typeorm';
@@ -30,18 +30,30 @@ export class MovieService {
         return await this.movieRepository.delete({ id: id, createdBy: userId })
     }
 
-    async findPaginated(query: PaginationQuery, userId: number): Promise<Pagination<Movies>> {
-        const take = query.pageSize || 0;
-        let pageNumber = (query.pageNumber <= 0) ? 1 : query.pageNumber;
+    async findPaginated(pageQuery: PaginationQuery, userId: number): Promise<Pagination<Movies>> {
+        const take = pageQuery.pageSize || 0;
+        let pageNumber = (pageQuery.pageNumber <= 0) ? 1 : pageQuery.pageNumber;
         let skip = ((pageNumber - 1) * take);
 
-        const searchName = query.search || "";
-        const sortOrder = query.sort || "ASC";
+        const searchName = pageQuery.search || "";
+
+        let [property, value] = pageQuery.sortString?.split("~") ?? ["", ""];
+
+        let allowedProperties = ["name", "releaseDate"];
+
+        let buildSortParam = {};
+        if (allowedProperties.includes(property.trim()) &&
+            ["ASC", "DESC"].includes(value?.toUpperCase().trim())) {
+            buildSortParam[property] = value.toUpperCase();
+        }
+        if (Object.keys(buildSortParam).length === 0) {
+            buildSortParam["name"] = "ASC";
+        }
 
         const [result, total] = await this.movieRepository.findAndCount(
             {
                 where: { name: Like("%" + searchName + "%"), createdBy: userId },
-                order: { name: sortOrder },
+                order: { ...buildSortParam },
                 take: take,
                 skip: skip
             }
