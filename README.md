@@ -29,16 +29,16 @@ $ npm run start
 ## Setting up Frontend
 After setting up the backend let's setup the frontend React app.
 React project repository is linked as a submodule on the backend api project repository.
-So run command 
+So run this command on your project directory to download the frontend app.
 ```bash
 $ git submodule update --init --recursive
 ```
-On your project directory to clone the frontend app. After that goto directory MovieListreact. If the previous command has executed successfully then you should see the react frontend code in this directory.
-On MovieListReact directory run command
+After that goto directory MovieListreact. If the previous command has executed successfully then you should see the react frontend code in this directory.<br/>
+Now on MovieListReact directory run command to install the node_modules.
 ```bash
 $ npm install
 ```
-to install the node_modules. After the necessary node_module files downloaded successfully run command,
+ After the necessary node_module files being downloaded successfully run command,
 ```bash
 $ npm start
 ```
