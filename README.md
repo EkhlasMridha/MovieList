@@ -25,12 +25,6 @@ If the app starts successfully, Your backend project setup will be completed.
 ```bash
 # development
 $ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 ## Setting up Frontend
 After setting up the backend let's setup the frontend React app.
