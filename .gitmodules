@@ -1,0 +1,3 @@
+[submodule "MovieListReact"]
+	path = MovieListReact
+	url = https://github.com/EkhlasMridha/MovieListReact.git
