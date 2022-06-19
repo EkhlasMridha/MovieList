@@ -12,9 +12,11 @@ $ npm install
 ```
 ## Setting up the Database
 MySql database is used in this project. To simply setup your mysql database server on your machine at first you have to download [xampp](https://www.apachefriends.org/download.html).
-After the installation run the xamp panel and start ```Apache``` and ```MySql``` server as shown in the image. Make sure the port ```3306``` is same on your machine to o on which mysql server is running. If the mysql port is different than the image then you have to set your mysql server port to the project db configuration file. ![xampp](/xamp.png)
+After the installation run the xamp panel and start ```Apache``` and ```MySql``` server as shown in the image. Make sure the port ```3306``` is same on your machine 
+too on which mysql server is running. If the mysql port is different then you have to change the DB configuration.
+![xampp](/xamp.png)
 
-Goto your project directory then src>app.module.ts file and check the port number is same as the port mysql is running on your machine. ![config](/config.png) 
+Goto your project directory then src>app.module.ts file and check the port number is same as the port of mysql running on your machine. ![config](/config.png) 
 
 ## Running the app
 Now run command ```npm run start``` on your project to run the api project. The api app will start running on http://localhost:4000.
