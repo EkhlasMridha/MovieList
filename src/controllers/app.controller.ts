@@ -5,7 +5,7 @@ import { Public } from '../guards/public.guard';
 import { AuthService } from '../auth/auth.service';
 import { UserCreateDto } from '../Dtos/Users/user-create.dto';
 
-@Controller("api")
+@Controller("auth")
 export class AppController {
   constructor(private readonly userService: UserService,
     private authService: AuthService) { }

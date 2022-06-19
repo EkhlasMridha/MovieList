@@ -22,6 +22,10 @@ export class MovieService {
         })
     }
 
+    async deleteById(id: any) {
+        return await this.movieRepository.delete({ id: id })
+    }
+
     async findPaginated(query: PaginationQuery): Promise<Pagination<Movies>> {
         const take = query.pageSize || 0;
         let pageNumber = (query.pageNumber <= 0) ? 1 : query.pageNumber;
