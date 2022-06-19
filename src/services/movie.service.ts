@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateMovie } from 'src/Dtos/movies/create-movie';
-import { DynamicPaginationQuery, PaginationQuery } from 'src/Dtos/pagination-query.model';
+import { PaginationQuery } from 'src/Dtos/pagination-query.model';
 import { Pagination } from 'src/Dtos/pagination.model';
 import { Movies } from 'src/Entities/Movies';
 import { Like, Repository } from 'typeorm';
