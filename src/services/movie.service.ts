@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CreateMovie } from 'src/Dtos/movies/create-movie';
 import { PaginationQuery } from 'src/Dtos/pagination-query.model';
 import { Pagination } from 'src/Dtos/pagination.model';
 import { Movies } from 'src/Entities/Movies';
@@ -12,21 +13,24 @@ export class MovieService {
         private movieRepository: Repository<Movies>
     ) { }
 
-    async create(payload: any) {
+    async create(payload: Movies) {
         return await this.movieRepository.save(payload);
     }
 
-    async findOne(condition: any) {
+    async findOne(condition: any, userId: number) {
         return await this.movieRepository.findOne({
-            where: condition
+            where: {
+                ...condition,
+                createdBy: userId
+            }
         })
     }
 
-    async deleteById(id: any) {
-        return await this.movieRepository.delete({ id: id })
+    async deleteById(id: any, userId: number) {
+        return await this.movieRepository.delete({ id: id, createdBy: userId })
     }
 
-    async findPaginated(query: PaginationQuery): Promise<Pagination<Movies>> {
+    async findPaginated(query: PaginationQuery, userId: number): Promise<Pagination<Movies>> {
         const take = query.pageSize || 0;
         let pageNumber = (query.pageNumber <= 0) ? 1 : query.pageNumber;
         let skip = ((pageNumber - 1) * take);
@@ -36,7 +40,8 @@ export class MovieService {
 
         const [result, total] = await this.movieRepository.findAndCount(
             {
-                where: { name: Like("%" + searchName + "%") }, order: { name: sortOrder },
+                where: { name: Like("%" + searchName + "%"), createdBy: userId },
+                order: { name: sortOrder },
                 take: take,
                 skip: skip
             }

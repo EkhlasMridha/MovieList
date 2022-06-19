@@ -15,7 +15,7 @@ export class AppController {
   async register(
     @Body() createuserDto: UserCreateDto
   ) {
-    console.log(createuserDto)
+
     const passwordHash = await bcrypt.hash(createuserDto.password, 14);
 
     return this.userService.create({

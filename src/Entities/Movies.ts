@@ -11,4 +11,7 @@ export class Movies {
 
     @Column()
     releaseDate: Date;
+
+    @Column()
+    createdBy: number;
 }
