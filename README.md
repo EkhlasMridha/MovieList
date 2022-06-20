@@ -2,48 +2,56 @@
 
 ## Description
 
-Bakcend API project developed in NestJs to create and manage your favourite movielist. Code editor used to develop both of this app is ```VS Code```.
+Bakcend API project developed with NestJs and ReactJs to create and manage your favourite movielist.<br/>
+Tools and Technology used:
+* ***Backend*** : NestJs
+* ***Frontentd UI*** : ReactJs
+* ***Database*** : MySql
+* ***Database local server tool*** : Xamp
+* ***Code Editor*** : VS Code
 
-## Installation
+## NestJs Backend Project Setup
 
 After cloning the repository to your local machine run command ```npm install``` inside the project directory to install necessary packages.
 ```bash
 $ npm install
 ```
-## Setting up the Database
-MySql database is used in this project. To simply setup your mysql database server on your machine at first you have to download [xampp](https://www.apachefriends.org/download.html).
-After the installation run the xamp panel and start ```Apache``` and ```MySql``` server as shown in the image. Make sure the port ```3306``` is same on your machine 
-too on which mysql server is running. If the mysql port is different then you have to change the DB configuration.
+## Database Setup
+MySql database is used in this project. To simply setup your mysql database server on your machine at first you have to download and install [xampp](https://www.apachefriends.org/download.html). on your local macine.<br/>
+After installation run xamp and on xamp panel start ```Apache``` and ```MySql``` server as shown in the image. Make sure the port ```3306``` is same on your machine 
+too on which mysql server is running. If the mysql port is different then you have to change the Project DB configuration.
 ![xampp](/xamp.png)
 
-Goto your project directory then src>app.module.ts file and check the port number is same as the port of mysql running on your machine. ![config](/config.png) 
+Goto your project directory then ```src>app.module.ts``` and check the port number is same as the port of mysql running on your machine. If it is not same then change port on the DB configuration to the port on which MySql server is running on your machine.<br/> ![config](/config.png) 
 
 ## Running the app
-Now run command ```npm run start``` on your project to run the api project. The api app will start running on http://localhost:4000.
-If the app starts successfully, Your backend project setup will be completed.
+After install packages and setting up the MySql database on your machine got the project directory and run command ```npm run start``` to run the NestJs api project. The api app will start running on http://localhost:4000.
+If the app starts successfully, Your can assume that backend project setup is completed.
 
 ```bash
-# development
+# start backend server
 $ npm run start
 ```
-## Setting up Frontend
-After setting up the backend let's setup the frontend React app.
-React project repository is linked as a submodule on the backend api project repository.
-So run this command on your project directory to download the frontend app.
+## Setting up React Frontend UI
+After setting up the backend let's setup the frontend React app.<br/>
+React project repository is linked to the backend api project repository as a submodule. To clone/download that submodule on your local machine simply run this command on your project directory:
 ```bash
 $ git submodule update --init --recursive
 ```
 After that goto directory MovieListreact. If the previous command has executed successfully then you should see the react frontend code in this directory.<br/>
-Now on MovieListReact directory run command to install the node_modules.
+Now on MovieListReact directory run command ```npm install``` again to install the node_modules.
 ```bash
+#install react project dependencies
 $ npm install
 ```
- After the necessary node_module files being downloaded successfully run command,
+ After the installation of dependencies of React app, run this command to run the react development server:
 ```bash
+# start react development server
 $ npm start
 ```
-to run the development server of react app.
-After the react app server runs successfully open your web browser and browse http://localhost:3000 to browse the movie list application.
+
+After the react app server runs successfully open your web browser and browse http://localhost:3000 to browse the movie list application.<br/>
+***Congrats! You have completed the project setup***
 
 ## Using Movie List App
 * To use this app you have signup first. Click on the signup button, Fill up the form and click on submit to sign up on the portal.
